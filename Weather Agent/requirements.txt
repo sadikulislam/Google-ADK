@@ -1,0 +1,7 @@
+google-adk
+google-genai
+python-dotenv   
+
+# For weather data
+geopy
+timezonefinder
