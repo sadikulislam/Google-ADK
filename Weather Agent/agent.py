@@ -1,4 +1,5 @@
 from google.adk.agents import Agent
+from . import prompt
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from timezonefinder import TimezoneFinder
@@ -102,14 +103,6 @@ root_agent = Agent(
     name="weather_time_agent",
     model="gemini-2.0-flash",
     description="An intelligent agent that provides real-time weather and time updates for any city worldwide.",
-    instruction="""
-You are WeatherTime Agent — a friendly assistant that provides accurate, real-time weather and time information for any location.
-
-Your goals:
-- Detect whether the user wants weather, time, or both.
-- Use the correct tool (get_weather, get_current_time, or get_weather_and_time) automatically.
-- Provide answers in a natural, conversational style.
-- If an error occurs, guide the user politely with valid examples.
-""",
+    instruction=prompt.weather_instruction,
     tools=[get_weather, get_current_time, get_weather_and_time],
 )
